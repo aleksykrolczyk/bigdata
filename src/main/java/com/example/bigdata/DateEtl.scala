@@ -23,6 +23,7 @@ object DateEtl {
       `day` int,
       `week_count` int,
       `hour` int,
+      `unix_timestamp` int,
       `date_id` bigint)
       ROW FORMAT SERDE
       'org.apache.hadoop.hive.ql.io.orc.OrcSerde'
@@ -39,7 +40,8 @@ object DateEtl {
         month($"count_date").as("month"),
         dayofmonth($"count_date").as("day"),
         weekofyear($"count_date").as("week_count"),
-        $"hour"
+        $"hour",
+      (unix_timestamp($"count_date") + lit(3600) * $"hour").as("unix_timestamp")
       )
 
     val southDate = spark.read.format("csv").
@@ -50,7 +52,8 @@ object DateEtl {
         month($"count_date").as("month"),
         dayofmonth($"count_date").as("day"),
         weekofyear($"count_date").as("week_count"),
-        $"hour"
+        $"hour",
+      (unix_timestamp($"count_date") + lit(3600) * $"hour").as("unix_timestamp")
       )
 
     val scotlandDate = spark.read.format("csv").
@@ -61,13 +64,13 @@ object DateEtl {
         month($"count_date").as("month"),
         dayofmonth($"count_date").as("day"),
         weekofyear($"count_date").as("week_count"),
-        $"hour"
+        $"hour",
+        (unix_timestamp($"count_date") + lit(3600) * $"hour").as("unix_timestamp")
       )
 
 
     val allDate = northDate.union(southDate).union(scotlandDate).distinct().
-      withColumn("date_id", functions.monotonically_increasing_id()).
-      as[Date]
+      withColumn("date_id", functions.monotonically_increasing_id())
 
     allDate.write.insertInto("w_date")
   }
