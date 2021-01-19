@@ -7,7 +7,7 @@ spark.sql("""DROP TABLE IF EXISTS `w_weather`""")
 spark.sql("""CREATE TABLE `w_weather` (
   `weather_conditions` string,
   `weather_category` string,
-  `weather_id` int)
+  `weather_id` bigint)
   ROW FORMAT SERDE
   'org.apache.hadoop.hive.ql.io.orc.OrcSerde'
   STORED AS INPUTFORMAT
@@ -99,3 +99,5 @@ spark.sql(
     'org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat'
     """
 )
+
+System.exit(0)

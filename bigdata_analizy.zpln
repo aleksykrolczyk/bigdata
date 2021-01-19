@@ -1,0 +1,983 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n## wczytanie danych do tabel bezpośrednio z przygotowanych wcześniej plików csv żeby nie musieć czekać aż aż zrobi się tabela faktów",
+      "user": "anonymous",
+      "dateUpdated": "2021-01-19T22:02:10+0000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>wczytanie danych do tabel bezpośrednio z przygotowanych wcześniej plików csv żeby nie musieć czekać aż aż zrobi się tabela faktów</h2>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611093665966_344675556",
+      "id": "paragraph_1611093665966_344675556",
+      "dateCreated": "2021-01-19T22:01:05+0000",
+      "dateStarted": "2021-01-19T22:02:10+0000",
+      "dateFinished": "2021-01-19T22:02:12+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:241"
+    },
+    {
+      "text": "val username = \"adamkorytowski98\"\r\n\r\nimport org.apache.spark.sql._\r\n\r\ndef read_csv(path: String) : DataFrame = spark.read.format(\"org.apache.spark.csv\").option(\"header\", true).option(\"inferSchema\", true).csv(s\"/user/$username/project/data/\" + path)",
+      "user": "anonymous",
+      "dateUpdated": "2021-01-19T22:20:25+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34musername\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = adamkorytowski98\nimport org.apache.spark.sql._\n\u001b[1m\u001b[34mread_csv\u001b[0m: \u001b[1m\u001b[32m(path: String)org.apache.spark.sql.DataFrame\u001b[0m\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611004313575_1882743347",
+      "id": "paragraph_1611004313575_1882743347",
+      "dateCreated": "2021-01-18T21:11:53+0000",
+      "dateStarted": "2021-01-19T22:20:25+0000",
+      "dateFinished": "2021-01-19T22:20:50+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:242"
+    },
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "2021-01-19T21:48:15+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611092710524_1988718573",
+      "id": "paragraph_1611092710524_1988718573",
+      "dateCreated": "2021-01-19T21:45:10+0000",
+      "status": "READY",
+      "$$hashKey": "object:243"
+    },
+    {
+      "text": "read_csv(\"e_w_vehicle_type.csv\").write.insertInto(\"w_vehicle_type\")\nread_csv(\"e_w_road_name.csv\").write.insertInto(\"w_road_name\")\nread_csv(\"e_w_road_category.csv\").write.insertInto(\"w_road_category\")\nread_csv(\"e_w_date.csv\").write.insertInto(\"w_date\")\nread_csv(\"e_w_location.csv\").write.insertInto(\"w_location\")\nread_csv(\"e_w_weather.csv\").write.insertInto(\"w_weather\")",
+      "user": "anonymous",
+      "dateUpdated": "2021-01-19T22:21:21+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=0",
+              "$$hashKey": "object:2803"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=1",
+              "$$hashKey": "object:2804"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=2",
+              "$$hashKey": "object:2805"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=3",
+              "$$hashKey": "object:2806"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=4",
+              "$$hashKey": "object:2807"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=5",
+              "$$hashKey": "object:2808"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=6",
+              "$$hashKey": "object:2809"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=7",
+              "$$hashKey": "object:2810"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=8",
+              "$$hashKey": "object:2811"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=9",
+              "$$hashKey": "object:2812"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=10",
+              "$$hashKey": "object:2813"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=11",
+              "$$hashKey": "object:2814"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=12",
+              "$$hashKey": "object:2815"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=13",
+              "$$hashKey": "object:2816"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=14",
+              "$$hashKey": "object:2817"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=15",
+              "$$hashKey": "object:2818"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=16",
+              "$$hashKey": "object:2819"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=17",
+              "$$hashKey": "object:2820"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611004918958_1598615941",
+      "id": "paragraph_1611004918958_1598615941",
+      "dateCreated": "2021-01-18T21:21:58+0000",
+      "dateStarted": "2021-01-19T22:21:21+0000",
+      "dateFinished": "2021-01-19T22:21:41+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:244"
+    },
+    {
+      "text": "read_csv(\"e_facts_north_england.csv\").write.insertInto(\"facts\")\nread_csv(\"e_facts_south_england.csv\").write.insertInto(\"facts\")\nread_csv(\"e_facts_scotland.csv\").write.insertInto(\"facts\")",
+      "user": "anonymous",
+      "dateUpdated": "2021-01-19T22:22:29+0000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=18",
+              "$$hashKey": "object:3255"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=19",
+              "$$hashKey": "object:3256"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=20",
+              "$$hashKey": "object:3257"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=21",
+              "$$hashKey": "object:3258"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=22",
+              "$$hashKey": "object:3259"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=23",
+              "$$hashKey": "object:3260"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=24",
+              "$$hashKey": "object:3261"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=25",
+              "$$hashKey": "object:3262"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=26",
+              "$$hashKey": "object:3263"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611092890198_1442680230",
+      "id": "paragraph_1611092890198_1442680230",
+      "dateCreated": "2021-01-19T21:48:10+0000",
+      "dateStarted": "2021-01-19T22:22:29+0000",
+      "dateFinished": "2021-01-19T22:23:42+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:245"
+    },
+    {
+      "text": "spark.table(\"facts\").count()",
+      "user": "anonymous",
+      "dateUpdated": "2021-01-19T22:24:08+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres4\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 13684601\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=27",
+              "$$hashKey": "object:3360"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611005009822_1808199889",
+      "id": "paragraph_1611005009822_1808199889",
+      "dateCreated": "2021-01-18T21:23:29+0000",
+      "dateStarted": "2021-01-19T22:24:08+0000",
+      "dateFinished": "2021-01-19T22:24:10+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:246"
+    },
+    {
+      "text": "%md\n# Analiza 1",
+      "user": "anonymous",
+      "dateUpdated": "2021-01-18T21:27:18+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>Analiza 1</h1>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611004316820_1292604436",
+      "id": "paragraph_1611004316820_1292604436",
+      "dateCreated": "2021-01-18T21:11:56+0000",
+      "dateStarted": "2021-01-18T21:27:18+0000",
+      "dateFinished": "2021-01-18T21:27:18+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:247"
+    },
+    {
+      "text": "val weather_df = spark.table(\"w_weather\").select(\"weather_id\", \"weather_category\")\r\nval date_df = spark.table(\"w_date\").select(\"date_id\", \"month\")\r\nval vehicle_type_df = spark.table(\"w_vehicle_type\").select(\"vehicle_type_id\", \"vehicle_type_category\")\r\nval facts_df = spark.table(\"facts\").select(\"vehicle_type_id\", \"date_id\", \"weather_id\", \"count\")",
+      "user": "anonymous",
+      "dateUpdated": "2021-01-19T22:24:20+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mweather_df\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [weather_id: int, weather_category: string]\n\u001b[1m\u001b[34mdate_df\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [date_id: bigint, month: int]\n\u001b[1m\u001b[34mvehicle_type_df\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [vehicle_type_id: bigint, vehicle_type_category: string]\n\u001b[1m\u001b[34mfacts_df\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [vehicle_type_id: int, date_id: bigint ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611004317885_1877178862",
+      "id": "paragraph_1611004317885_1877178862",
+      "dateCreated": "2021-01-18T21:11:57+0000",
+      "dateStarted": "2021-01-19T22:24:20+0000",
+      "dateFinished": "2021-01-19T22:24:21+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:248"
+    },
+    {
+      "text": "val analiza1 = facts_df\r\n  .join(weather_df, weather_df(\"weather_id\") === facts_df(\"weather_id\"))\r\n  .join(date_df, date_df(\"date_id\") === facts_df(\"date_id\"))\r\n  .join(vehicle_type_df, vehicle_type_df(\"vehicle_type_id\") === facts_df(\"vehicle_type_id\"))\r\n  .where($\"vehicle_type_category\" === \"M\" || $\"vehicle_type_category\" === \"L\")\r\n  .groupBy($\"month\", $\"weather_category\", $\"vehicle_type_category\")\r\n  .agg(sum($\"count\").as(\"sum_count\"))\r\n\r\nval favL = analiza1.where($\"vehicle_type_category\" === \"L\" && $\"weather_category\" === \"favorable\").select($\"month\", $\"sum_count\".as(\"favL\"))\r\nval favM = analiza1.where($\"vehicle_type_category\" === \"M\" && $\"weather_category\" === \"favorable\").select($\"month\", $\"sum_count\".as(\"favM\"))\r\nval unfavL = analiza1.where($\"vehicle_type_category\" === \"L\" && $\"weather_category\" === \"unfavorable\").select($\"month\", $\"sum_count\".as(\"unfavL\"))\r\nval unfavM = analiza1.where($\"vehicle_type_category\" === \"M\" && $\"weather_category\" === \"unfavorable\").select($\"month\", $\"sum_count\".as(\"unfavM\"))\r\n\r\nval analiza1_2 = favL\r\n  .join(favM, \"month\")\r\n  .join(unfavL, \"month\")\r\n  .join(unfavM, \"month\")\r\n  .select($\"month\", (($\"unfavL\"/$\"unfavM\")/($\"favL\"/$\"favM\")).as(\"ratio\"))\r\n  .orderBy($\"month\".asc)\r\n\r\nanaliza1_2.createOrReplaceTempView(\"analiza1\");",
+      "user": "anonymous",
+      "dateUpdated": "2021-01-19T22:24:24+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34manaliza1\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [month: int, weather_category: string ... 2 more fields]\n\u001b[1m\u001b[34mfavL\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [month: int, favL: bigint]\n\u001b[1m\u001b[34mfavM\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [month: int, favM: bigint]\n\u001b[1m\u001b[34munfavL\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [month: int, unfavL: bigint]\n\u001b[1m\u001b[34munfavM\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [month: int, unfavM: bigint]\n\u001b[1m\u001b[34manaliza1_2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [month: int, ratio: double]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611004319146_1637038599",
+      "id": "paragraph_1611004319146_1637038599",
+      "dateCreated": "2021-01-18T21:11:59+0000",
+      "dateStarted": "2021-01-19T22:24:24+0000",
+      "dateFinished": "2021-01-19T22:24:25+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:249"
+    },
+    {
+      "text": "%sql\nselect * from analiza1",
+      "user": "anonymous",
+      "dateUpdated": "2021-01-19T22:24:35+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "month": "string",
+                      "ratio": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "month",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "ratio",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=28",
+              "$$hashKey": "object:3573"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=29",
+              "$$hashKey": "object:3574"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=30",
+              "$$hashKey": "object:3575"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=31",
+              "$$hashKey": "object:3576"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=32",
+              "$$hashKey": "object:3577"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=33",
+              "$$hashKey": "object:3578"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611004320383_2062723931",
+      "id": "paragraph_1611004320383_2062723931",
+      "dateCreated": "2021-01-18T21:12:00+0000",
+      "dateStarted": "2021-01-19T22:24:35+0000",
+      "dateFinished": "2021-01-19T22:25:00+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:250",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "month\tratio\n3\t0.7460071911124445\n4\t0.7044224611329291\n5\t0.7449305740227847\n6\t0.7236696846508792\n7\t0.7557100219472599\n9\t0.7684172394052355\n10\t0.828434906585043\n11\t0.7507805792649528\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%md\n# Analiza 2",
+      "user": "anonymous",
+      "dateUpdated": "2021-01-18T21:31:09+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>Analiza 2</h1>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611004321504_1515899718",
+      "id": "paragraph_1611004321504_1515899718",
+      "dateCreated": "2021-01-18T21:12:01+0000",
+      "dateStarted": "2021-01-18T21:31:09+0000",
+      "dateFinished": "2021-01-18T21:31:09+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:251"
+    },
+    {
+      "text": "val location_df = spark.table(\"w_location\").select(\"local_authority_ons_code\", \"region_name\")\r\nval date_df = spark.table(\"w_date\").select(\"date_id\", \"year\")\r\nval vehicle_type_df = spark.table(\"w_vehicle_type\").select(\"vehicle_type_id\", \"vehicle_type_genre\")\r\nval facts_df = spark.table(\"facts\").select(\"vehicle_type_id\", \"date_id\", \"local_authority_ons_code\", \"count\")",
+      "user": "anonymous",
+      "dateUpdated": "2021-01-19T22:25:07+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mlocation_df\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [local_authority_ons_code: string, region_name: string]\n\u001b[1m\u001b[34mdate_df\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [date_id: bigint, year: int]\n\u001b[1m\u001b[34mvehicle_type_df\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [vehicle_type_id: bigint, vehicle_type_genre: string]\n\u001b[1m\u001b[34mfacts_df\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [vehicle_type_id: int, date_id: bigint ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611005459197_2143237785",
+      "id": "paragraph_1611005459197_2143237785",
+      "dateCreated": "2021-01-18T21:30:59+0000",
+      "dateStarted": "2021-01-19T22:25:07+0000",
+      "dateFinished": "2021-01-19T22:25:07+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:252"
+    },
+    {
+      "text": "val analiza2 = facts_df\r\n  .join(location_df, location_df(\"local_authority_ons_code\") === facts_df(\"local_authority_ons_code\"))\r\n  .join(date_df, date_df(\"date_id\") === facts_df(\"date_id\"))\r\n  .join(vehicle_type_df, vehicle_type_df(\"vehicle_type_id\") === facts_df(\"vehicle_type_id\"))\r\n  .where($\"vehicle_type_genre\" === \"human_powered\")\r\n  .groupBy($\"region_name\", $\"year\")\r\n  .agg(avg($\"count\").as(\"count\"))\r\n\r\nval analiza2_2 = analiza2.where($\"year\" === 2010).select($\"region_name\", $\"count\".as(\"reference\"))\r\n\r\nval analiza2_3 = analiza2.where($\"year\" > 2010)\r\n  .join(analiza2_2, \"region_name\")\r\n  .select($\"region_name\", $\"year\", ($\"count\"/$\"reference\"-1).as(\"increase\"))\r\n  .groupBy($\"region_name\")\r\n  .pivot($\"year\")\r\n  .agg(sum(\"increase\"))\r\n  \r\nanaliza2_3.createOrReplaceTempView(\"analiza2\");",
+      "user": "anonymous",
+      "dateUpdated": "2021-01-19T22:25:09+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34manaliza2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [region_name: string, year: int ... 1 more field]\n\u001b[1m\u001b[34manaliza2_2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [region_name: string, reference: double]\n\u001b[1m\u001b[34manaliza2_3\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [region_name: string, 2011: double ... 3 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=35",
+              "$$hashKey": "object:3901"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=34",
+              "$$hashKey": "object:3902"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=36",
+              "$$hashKey": "object:3903"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=37",
+              "$$hashKey": "object:3904"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=38",
+              "$$hashKey": "object:3905"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611005459745_1012707521",
+      "id": "paragraph_1611005459745_1012707521",
+      "dateCreated": "2021-01-18T21:30:59+0000",
+      "dateStarted": "2021-01-19T22:25:09+0000",
+      "dateFinished": "2021-01-19T22:25:26+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:253"
+    },
+    {
+      "text": "%sql\nselect * from analiza2",
+      "user": "anonymous",
+      "dateUpdated": "2021-01-19T22:25:28+0000",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "2011": "string",
+                      "2012": "string",
+                      "2013": "string",
+                      "2014": "string",
+                      "2015": "string",
+                      "2016": "string",
+                      "2017": "string",
+                      "2018": "string",
+                      "region_name": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "region_name",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "2011",
+                  "index": 1,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "2012",
+                  "index": 2,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "2013",
+                  "index": 3,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "2014",
+                  "index": 4,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "region_name\t2011\t2012\t2013\t2014\nNorth West\t-0.027645364004639905\t-0.042299284043801566\t-0.0019416823194472466\t0.08411271240061713\nWales\t0.07859537330505773\t0.016902087126127174\t0.0391515379896481\t0.335404070932644\nLondon\t-0.21097703774154863\t0.022124160780107704\t0.09322628865903981\t-0.13553336358951873\nSouth East\t0.11835707336136703\t-0.042249474161733525\t-0.025005664776831193\t0.037796627205878286\nEast of England\t-0.05806125752377844\t-0.21452606915606431\t-0.1540277948280534\t-0.04122846234588995\nSouth West\t-0.010589478353532966\t0.003804441530733671\t0.09527773618577307\t0.034050341257588324\nEast Midlands\t0.01890991675855247\t0.0692647022426982\t-0.0617665214307308\t-0.09039858429481862\nYorkshire and The Humber\t0.10149170947051722\t-0.022303985262440595\t-0.025418352277617906\t-0.11378960924444959\nWest Midlands\t0.027422305034455752\t-3.912686803453358E-5\t0.05349157874142163\t0.010282863147178967\nNorth East\t-0.011686211416380932\t0.04473557844354348\t0.14673373877797702\t-0.04009451834089839\nScotland\t0.14756969756037397\t-0.007373041529173174\t-0.033250355994572156\t-0.07743193057430386\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=39",
+              "$$hashKey": "object:4208"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=40",
+              "$$hashKey": "object:4209"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=41",
+              "$$hashKey": "object:4210"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=42",
+              "$$hashKey": "object:4211"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=43",
+              "$$hashKey": "object:4212"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=44",
+              "$$hashKey": "object:4213"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=45",
+              "$$hashKey": "object:4214"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=46",
+              "$$hashKey": "object:4215"
+            },
+            {
+              "jobUrl": "http://bigdata-cluster-m.europe-west4-c.c.temporal-tensor-291812.internal:37165/jobs/job?id=47",
+              "$$hashKey": "object:4216"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611005460467_1048888946",
+      "id": "paragraph_1611005460467_1048888946",
+      "dateCreated": "2021-01-18T21:31:00+0000",
+      "dateStarted": "2021-01-19T22:25:29+0000",
+      "dateFinished": "2021-01-19T22:25:42+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:254"
+    },
+    {
+      "user": "anonymous",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1611009129276_115623680",
+      "id": "paragraph_1611009129276_115623680",
+      "dateCreated": "2021-01-18T22:32:09+0000",
+      "status": "READY",
+      "$$hashKey": "object:255"
+    }
+  ],
+  "name": "bigdata_analizy",
+  "id": "2FXGX7X4C",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0-preview2",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/bigdata_analizy"
+}
