@@ -27,12 +27,11 @@ object FactsEtl {
 
 
         // load all necessary dimension tables
-        val weather_df = spark.sql("SELECT * FROM w_weather")
-        val date_df = spark.sql("SELECT * FROM w_date")
-        val location_df = spark.sql("SELECT * FROM w_location")
-        val road_category_df = spark.sql("SELECT * FROM w_road_category")
-        val road_name_df = spark.sql("SELECT * FROM w_road_name")
-        val vehicle_types_df = spark.sql("SELECT * FROM w_vehicle_type")
+        val weather_df = spark.table("w_weather")
+        val date_df = spark.table("w_date").select($"date_id", $"unix_timestamp")
+        val road_category_df = spark.table("w_road_category")
+        val road_name_df = spark.table("w_road_name")
+        val vehicle_types_df = spark.table("w_vehicle_type")
 
         //GET DATA FROM MAIN* FILES
 
@@ -58,58 +57,57 @@ object FactsEtl {
                 $"hgvs_6_articulated_axle"
             )
 
-        //    val facts_raw_scotland = spark.read.format("csv").
-        //        option("header", true).option("inferSchema", true).
-        //        load(path + s"/mainDataScotland.csv")
-        //        .select(
-        //        (unix_timestamp($"count_date") + lit(3600) * $"hour").as("unix_timestamp"),
-        //        $"local_authoirty_ons_code".as("local_authority_ons_code"),
-        //        $"road_name",
-        //        $"road_type",
-        //        $"road_category",
-        //        $"pedal_cycles",
-        //        $"two_wheeled_motor_vehicles",
-        //        $"cars_and_taxis",
-        //        $"buses_and_coaches",
-        //        $"lgvs",
-        //        $"hgvs_2_rigid_axle",
-        //        $"hgvs_3_rigid_axle",
-        //        $"hgvs_4_or_more_rigid_axle",
-        //        $"hgvs_3_or_4_articulated_axle",
-        //        $"hgvs_5_articulated_axle",
-        //        $"hgvs_6_articulated_axle"
-        //        )
-        //
-        //    val facts_raw_south_england = spark.read.format("csv").
-        //        option("header", true).option("inferSchema", true).
-        //        load(path + s"/mainDataSouthEngland.csv")
-        //        .select(
-        //        (unix_timestamp($"count_date") + lit(3600) * $"hour").as("unix_timestamp"),
-        //        $"local_authoirty_ons_code".as("local_authority_ons_code"),
-        //        $"road_name",
-        //        $"road_type",
-        //        $"road_category",
-        //        $"pedal_cycles",
-        //        $"two_wheeled_motor_vehicles",
-        //        $"cars_and_taxis",
-        //        $"buses_and_coaches",
-        //        $"lgvs",
-        //        $"hgvs_2_rigid_axle",
-        //        $"hgvs_3_rigid_axle",
-        //        $"hgvs_4_or_more_rigid_axle",
-        //        $"hgvs_3_or_4_articulated_axle",
-        //        $"hgvs_5_articulated_axle",
-        //        $"hgvs_6_articulated_axle"
-        //        )
+            val facts_raw_scotland = spark.read.format("csv").
+                option("header", true).option("inferSchema", true).
+                load(path + s"/mainDataScotland.csv")
+                .select(
+                (unix_timestamp($"count_date") + lit(3600) * $"hour").as("unix_timestamp"),
+                $"local_authoirty_ons_code".as("local_authority_ons_code"),
+                $"road_name",
+                $"road_type",
+                $"road_category",
+                $"pedal_cycles",
+                $"two_wheeled_motor_vehicles",
+                $"cars_and_taxis",
+                $"buses_and_coaches",
+                $"lgvs",
+                $"hgvs_2_rigid_axle",
+                $"hgvs_3_rigid_axle",
+                $"hgvs_4_or_more_rigid_axle",
+                $"hgvs_3_or_4_articulated_axle",
+                $"hgvs_5_articulated_axle",
+                $"hgvs_6_articulated_axle"
+                )
 
-        val facts_raw_df = facts_raw_north_england //.union(facts_raw_scotland).union(facts_raw_south_england)
+            val facts_raw_south_england = spark.read.format("csv").
+                option("header", true).option("inferSchema", true).
+                load(path + s"/mainDataSouthEngland.csv")
+                .select(
+                (unix_timestamp($"count_date") + lit(3600) * $"hour").as("unix_timestamp"),
+                $"local_authoirty_ons_code".as("local_authority_ons_code"),
+                $"road_name",
+                $"road_type",
+                $"road_category",
+                $"pedal_cycles",
+                $"two_wheeled_motor_vehicles",
+                $"cars_and_taxis",
+                $"buses_and_coaches",
+                $"lgvs",
+                $"hgvs_2_rigid_axle",
+                $"hgvs_3_rigid_axle",
+                $"hgvs_4_or_more_rigid_axle",
+                $"hgvs_3_or_4_articulated_axle",
+                $"hgvs_5_articulated_axle",
+                $"hgvs_6_articulated_axle"
+                )
 
+        val facts_raw_df = facts_raw_scotland.union(facts_raw_scotland).union(facts_raw_south_england)
 
         // DATE_ID
         val facts_with_date_df = facts_raw_df
             .join(date_df, date_df("unix_timestamp") === facts_raw_df("unix_timestamp"))
             .drop(date_df("unix_timestamp"))
-            .drop("year", "month", "day", "week_count", "hour")
+
 
         // WEATHER_ID
         val file = spark.sparkContext.textFile(path + "/weather.txt")
@@ -153,10 +151,8 @@ object FactsEtl {
         // ROAD CATEGORY
         val facts_with_road_category_df = facts_with_weather_df
             .join(road_category_df, road_category_df("road_type") === facts_with_weather_df("road_type") && road_category_df("road_category") === facts_with_weather_df("road_category"))
-            .drop(road_category_df("road_type"))
-            .drop(facts_with_weather_df("road_type"))
-            .drop(road_category_df("road_category"))
-            .drop(facts_with_weather_df("road_category"))
+            .drop("road_type", "road_category")
+
 
         // ROAD NAME
         val facts_with_road_name_df = facts_with_road_category_df

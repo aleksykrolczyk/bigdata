@@ -3,13 +3,11 @@ package com.example.bigdata
 import org.apache.spark.sql.{SparkSession}
 import org.apache.spark.{SparkConf, SparkContext}
 
-object createTables {
-  case class Weather(weather_id: BigInt, weather_conditions: String, weather_category: String)
-
+object TableConstructor {
   def main(args: Array[String]) {
-    val conf: SparkConf = new SparkConf().setAppName("Weather")
+    val conf: SparkConf = new SparkConf().setAppName("tableCreation")
     val sc: SparkContext = new SparkContext(conf)
-    val spark = SparkSession.builder().appName("Weather").getOrCreate()
+    val spark = SparkSession.builder().appName("tableCreation").getOrCreate()
 
     spark.sql("""DROP TABLE IF EXISTS facts""")
     spark.sql(
