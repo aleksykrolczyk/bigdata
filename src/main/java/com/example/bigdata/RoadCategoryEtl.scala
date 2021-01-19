@@ -15,18 +15,6 @@ object RoadCategoryEtl {
     val path = args(0)
     import spark.implicits._
 
-    spark.sql("""DROP TABLE IF EXISTS `w_road_category`""")
-    spark.sql("""CREATE TABLE `w_road_category` (
-      `road_type` string,
-      `road_category` string,
-      `road_category_id` bigint)
-      ROW FORMAT SERDE
-      'org.apache.hadoop.hive.ql.io.orc.OrcSerde'
-      STORED AS INPUTFORMAT
-      'org.apache.hadoop.hive.ql.io.orc.OrcInputFormat'
-      OUTPUTFORMAT
-      'org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat'""")
-
     val northRoadCategory = spark.read.format("csv").
       option("header", true).option("inferSchema", true).
       load(path + s"/mainDataNorthEngland.csv").

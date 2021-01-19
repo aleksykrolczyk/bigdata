@@ -15,18 +15,6 @@ object LocationEtl {
     val path = args(0)
     import spark.implicits._
 
-    spark.sql("""DROP TABLE IF EXISTS `w_location`""")
-    spark.sql("""CREATE TABLE `w_location` (
-      `local_authority_ons_code` string,
-      `local_authority_name` string,
-      `region_name` string)
-      ROW FORMAT SERDE
-      'org.apache.hadoop.hive.ql.io.orc.OrcSerde'
-      STORED AS INPUTFORMAT
-      'org.apache.hadoop.hive.ql.io.orc.OrcInputFormat'
-      OUTPUTFORMAT
-      'org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat'""")
-
     val northRegion = spark.read.format("csv").
       option("header", true).option("inferSchema", true).
       load(path + s"/regionsNorthEngland.csv").

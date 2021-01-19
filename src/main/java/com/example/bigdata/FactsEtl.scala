@@ -26,27 +26,6 @@ object FactsEtl {
         import spark.implicits._
 
 
-        spark.sql("""DROP TABLE IF EXISTS facts""")
-        spark.sql(
-            """
-                CREATE TABLE facts (
-                     local_authority_ons_code string,
-                     date_id bigint,
-                     weather_id bigint,
-                     road_category_id bigint,
-                     road_name_id bigint,
-                     vehicle_type_id int,
-                     count int
-                )
-                ROW FORMAT SERDE
-                'org.apache.hadoop.hive.ql.io.orc.OrcSerde'
-                STORED AS INPUTFORMAT
-                'org.apache.hadoop.hive.ql.io.orc.OrcInputFormat'
-                OUTPUTFORMAT
-                'org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat'
-        """
-        )
-
         // load all necessary dimension tables
         val weather_df = spark.sql("SELECT * FROM w_weather")
         val date_df = spark.sql("SELECT * FROM w_date")

@@ -16,22 +16,6 @@ object DateEtl {
     val path = args(0)
     import spark.implicits._
 
-    spark.sql("""DROP TABLE IF EXISTS `w_date`""")
-    spark.sql("""CREATE TABLE `w_date` (
-      `year` int,
-      `month` int,
-      `day` int,
-      `week_count` int,
-      `hour` int,
-      `unix_timestamp` int,
-      `date_id` bigint)
-      ROW FORMAT SERDE
-      'org.apache.hadoop.hive.ql.io.orc.OrcSerde'
-      STORED AS INPUTFORMAT
-      'org.apache.hadoop.hive.ql.io.orc.OrcInputFormat'
-      OUTPUTFORMAT
-      'org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat'""")
-
     val northDate = spark.read.format("csv").
       option("header", true).option("inferSchema", true).
       load(path + s"/mainDataNorthEngland.csv").

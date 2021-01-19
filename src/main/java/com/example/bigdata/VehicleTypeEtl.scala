@@ -15,19 +15,6 @@ object VehicleTypeEtl {
     val path = args(0)
     import spark.implicits._
 
-    spark.sql("""DROP TABLE IF EXISTS `w_vehicle_type`""")
-    spark.sql("""CREATE TABLE `w_vehicle_type` (
-      `vehicle_type_name` string,
-      `vehicle_type_category` string,
-      `vehicle_type_genre` string,
-      `vehicle_type_id` bigint)
-      ROW FORMAT SERDE
-      'org.apache.hadoop.hive.ql.io.orc.OrcSerde'
-      STORED AS INPUTFORMAT
-      'org.apache.hadoop.hive.ql.io.orc.OrcInputFormat'
-      OUTPUTFORMAT
-      'org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat'""")
-
 //    Vehicle category
 //    M - vehicles carrying passengers
 //    N - vehicles carrying goods
