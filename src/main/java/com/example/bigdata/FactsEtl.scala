@@ -101,7 +101,7 @@ object FactsEtl {
                 $"hgvs_6_articulated_axle"
                 )
 
-        val facts_raw_df = facts_raw_scotland.union(facts_raw_scotland).union(facts_raw_south_england)
+        val facts_raw_df = facts_raw_north_england.union(facts_raw_scotland).union(facts_raw_south_england)
 
         // DATE_ID
         val facts_with_date_df = facts_raw_df
